@@ -302,7 +302,10 @@ func (b *Builder) Prepare(args ...interface{}) error {
 
 	if b.inheritEnvs {
 		b.cmd.SetEnv(append(os.Environ(), b.envs...))
+	} else {
+		b.cmd.SetEnv(b.envs)
 	}
+
 	if b.dir != "" {
 		b.cmd.SetDir(b.dir)
 	}
